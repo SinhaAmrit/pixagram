@@ -1,6 +1,8 @@
 
 # Pixagram: A Django-powered Instagram Clone
 
+![Logo](logo.jpg)
+
 Pixagram is a social media platform inspired by Instagram, built using the robust Django framework. It empowers users to:
 
 * **Capture and share** captivating photos and videos with their network.
@@ -17,16 +19,11 @@ Pixagram is a social media platform inspired by Instagram, built using the robus
 
 **Embrace Pixagram as your platform to express yourself, connect with the world, and share your captivating visual journey.**
 
-
-![Logo](logo.jpg)
-
-
 ## Tech Stack
 
 **Client:** HTML5, CSS3, JavaScript, Tailwind Css
 
 **Server:** Django, postgresql
-
 
 ## Run Locally
 
@@ -97,7 +94,6 @@ Open URL
   http://127.0.0.1:8000/
 ```
 
-
 ## Deployment
 
 To deploy this project run
@@ -108,7 +104,7 @@ To deploy this project run
 
 ## Authors
 
-- [@SinhaAmrit](https://github.com/SinhaAmrit)
-- [@ydvXanurag](https://github.com/ydvXanurag)
-- [@studentakanksha0810](https://github.com/studentakanksha0810)
-- [@Ashutosh-Singh-Thakur](https://github.com/Ashutosh-Singh-Thakur)
+* [@SinhaAmrit](https://github.com/SinhaAmrit)
+* [@ydvXanurag](https://github.com/ydvXanurag)
+* [@studentakanksha0810](https://github.com/studentakanksha0810)
+* [@Ashutosh-Singh-Thakur](https://github.com/Ashutosh-Singh-Thakur)
