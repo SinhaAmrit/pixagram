@@ -78,6 +78,12 @@ To run this project, you will need to add the following environment variables to
 Generate SECRET KEY by running
 
 ```bash
+  python manage.py collectstatic
+```
+
+Collect static files by running
+
+```bash
   python generate_SECRET_KEY.py
 ```
 
