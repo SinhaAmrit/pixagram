@@ -1,4 +1,5 @@
-# <img src="logo.jpg" alt="drawing" width="27"/> Pixagram: A Django-powered Instagram Clone
+
+# Pixagram: A Django-powered Instagram Clone
 
 Pixagram is a social media platform inspired by Instagram, built using the robust Django framework. It empowers users to:
 
@@ -15,3 +16,99 @@ Pixagram is a social media platform inspired by Instagram, built using the robus
 * **Engaging social features** to connect and interact with others.
 
 **Embrace Pixagram as your platform to express yourself, connect with the world, and share your captivating visual journey.**
+
+
+![Logo](logo.jpg)
+
+
+## Tech Stack
+
+**Client:** HTML5, CSS3, JavaScript, Tailwind Css
+
+**Server:** Django, postgresql
+
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone git@github.com:SinhaAmrit/pixagram.git
+```
+
+Create virtual environment
+
+```bash
+  py -m venv venv (windows)
+  python -m venv venv (Unix/MacOS)
+```
+
+Activate virtual environment
+
+```bash
+  venv\Scripts\activate.bat (windows)
+  source venv/bin/activate (Unix/MacOS)
+```
+
+Go to the project directory
+
+```bash
+  cd ./pixagram
+```
+
+Install dependencies
+
+```bash
+  pip install -r requirements.txt
+```
+
+Setup environment variables
+
+```bash
+  copy .env.copy .env (windows)
+  cp .env.copy .env (Unix/MacOS)
+```
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`SECRET_KEY`
+`DB_ENGINE`
+`DB_HOST`
+`DB_NAME`
+`DB_USER`
+`DB_PASSWORD`
+`DB_PORT`
+
+Make migrations
+
+```bash
+  python manage.py migrate
+```
+
+Start the server
+
+```bash
+  python manage.py runserver
+```
+
+Open URL
+
+```bash
+  http://127.0.0.1:8000/
+```
+
+
+## Deployment
+
+To deploy this project run
+
+```bash
+  python manage.py collectstatic && python -m gunicorn pixagram.asgi:application -k uvicorn.workers.UvicornWorker
+```
+
+## Authors
+
+- [@SinhaAmrit](https://github.com/SinhaAmrit)
+- [@ydvXanurag](https://github.com/ydvXanurag)
+- [@studentakanksha0810](https://github.com/studentakanksha0810)
+- [@Ashutosh-Singh-Thakur](https://github.com/Ashutosh-Singh-Thakur)
