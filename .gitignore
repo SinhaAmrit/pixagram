@@ -153,7 +153,7 @@ dmypy.json
 .pytype/
 
 # static files
-pixagram/static
+/staticfiles
 
 # Cython debug symbols
 cython_debug/
