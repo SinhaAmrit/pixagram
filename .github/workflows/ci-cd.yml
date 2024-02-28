@@ -38,4 +38,4 @@ jobs:
     steps:
     - name: Deploy to Production
       run: |
-          python manage.py collectstatic && python -m gunicorn pixagram.asgi:application -k uvicorn.workers.UvicornWorker
+          python -m gunicorn pixagram.asgi:application -k uvicorn.workers.UvicornWorker
