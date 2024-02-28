@@ -58,6 +58,12 @@ Install dependencies
   pip install -r requirements.txt
 ```
 
+Collect static files by running
+
+```bash
+  python manage.py collectstatic
+```
+
 Setup environment variables
 
 ```bash
@@ -76,12 +82,6 @@ To run this project, you will need to add the following environment variables to
 `DB_PORT`  
 
 Generate SECRET KEY by running
-
-```bash
-  python manage.py collectstatic
-```
-
-Collect static files by running
 
 ```bash
   python generate_SECRET_KEY.py
@@ -110,7 +110,7 @@ Open URL
 To deploy this project run
 
 ```bash
-  python manage.py collectstatic && python -m gunicorn pixagram.asgi:application -k uvicorn.workers.UvicornWorker
+  python -m gunicorn pixagram.asgi:application -k uvicorn.workers.UvicornWorker
 ```
 
 ## Authors
