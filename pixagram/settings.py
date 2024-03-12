@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "debug_toolbar",
     "schema_graph",
+    "django_seed",
     "post",
     "crispy_forms",
     "crispy_bootstrap5",

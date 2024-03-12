@@ -10,7 +10,16 @@
 </head>
 
 <body>
-    <h1>Working!</h1>
+    <h1>Pixagram!</h1>
+    {% for post in post_items %}
+    <hr>
+    <img src="{{post.picture.url}}" alt="" width="300"> <br>
+    Username: <b>{{ post.user.username }}</b> <br>
+    Caption: {{ post.caption }} <br>
+    Likes: {{ post.likes}} Likes<br>
+    Posted: {{ post.posted|date:"d M, Y" }} <br>
+    Tags: {% for tag in post.tag.all %} <a href="{{tag.getabsolute_url}}">#{{tag}}</a> {% endfor %}
+    {% endfor %}
 </body>
 
 </html>
