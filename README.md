@@ -20,7 +20,7 @@ Pixagram is a social media platform inspired by Instagram, built using the robus
 
 ## Tech Stack
 
-**Client:** HTML5, CSS3, JavaScript, Tailwind Css
+**Client:** HTML5, CSS3, JavaScript
 
 **Server:** Django, postgresql
 
@@ -84,7 +84,7 @@ To run this project, you will need to add the following environment variables to
 Generate SECRET KEY by running
 
 ```bash
-  python generate_SECRET_KEY.py
+  python tools/generate_SECRET_KEY.py
 ```
 
 Make migrations
@@ -107,10 +107,18 @@ Open URL
 
 ## Deployment
 
-To deploy this project run
+pixagram/settings.py
 
 ```bash
-  python -m gunicorn pixagram.asgi:application -k uvicorn.workers.UvicornWorker
+  ...
+    DEBUG = False
+  ...
+```
+
+run
+
+```bash
+  python manage.py collectstatic && python -m gunicorn pixagram.asgi:application -k uvicorn.workers.UvicornWorker
 ```
 
 ## Authors
