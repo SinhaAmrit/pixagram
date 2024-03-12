@@ -20,6 +20,7 @@ from schema_graph.views import Schema
 
 
 urlpatterns = [
+    path("", include("post.urls")),
     path("admin/", admin.site.urls),
     path("schema/", Schema.as_view()),
     path("__debug__/", include("debug_toolbar.urls")),
