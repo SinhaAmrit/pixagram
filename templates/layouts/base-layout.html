@@ -31,8 +31,8 @@
         {% include 'partials/sidebar.html' %}
         <main id="site__main"
             class="2xl:ml-[--w-side] xl:ml-[--w-side-sm] p-2.5 h-[calc(100vh-var(--m-top))] mt-[--m-top]">
-            {% block content %}
-            {% endblock content %}
+            {% block content_1 %}
+            {% endblock content_1 %}
         </main>
     </div>
     <!--chat button -->
@@ -58,6 +58,8 @@
 
         </button>
     </div>
+    {% block content_2 %}
+    {% endblock content_2 %}
     <!-- Javascript  -->
     <script src="{% static 'assets/js/uikit.min.js' %}"></script>
     <script src="{% static 'assets/js/simplebar.js' %}"></script>

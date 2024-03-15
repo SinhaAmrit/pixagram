@@ -1,6 +1,6 @@
 {% extends 'layouts/base-layout.html' %}
 {%load static%}
-{% block content %}
+{% block content_1 %}
 <!-- timeline -->
 <div class="lg:flex 2xl:gap-16 gap-12 max-w-[1065px] mx-auto" id="js-oversized">
 
@@ -218,15 +218,15 @@
                 <!-- post image -->
                 <a href="#preview_modal">
                     <div class="relative w-full lg:h-96 h-full sm:px-4">
-                        <img src="{{post.picture.url}}" alt=""
-                            class="sm:rounded-lg w-full h-full object-cover">
+                        <img src="{{post.picture.url}}" alt="" class="sm:rounded-lg w-full h-full object-cover">
                     </div>
                 </a>
                 <div class="sm:px-4 p-2.5">
                     <p class="font-normal"> {{ post.caption }} </p>
                 </div>
                 <div class="sm:px-4 p-2.5">
-                    <p class="font-normal"> . <br> . <br>{% for tag in post.tag.all %} <a href="{{tag.getabsolute_url}}">#{{tag}}</a> {% endfor %} </p>
+                    <p class="font-normal"> . <br> . <br>{% for tag in post.tag.all %} <a
+                            href="{{tag.getabsolute_url}}">#{{tag}}</a> {% endfor %} </p>
                 </div>
 
                 <!-- post icons -->
@@ -872,4 +872,56 @@
     </div>
 
 </div>
-{% endblock content %}
+{% endblock content_1 %}
+{% block content_2 %}
+<!-- Create Post -->
+<div class="lg:p-20 uk- open" id="create-status" uk-modal="">
+
+    <form method="POST" enctype="multipart/form-data"
+        class="uk-modal-dialog tt relative overflow-hidden mx-auto bg-white shadow-xl rounded-lg md:w-[520px] w-full dark:bg-dark2">
+
+        <div class="text-center py-4 border-b mb-0 dark:border-slate-700">
+            <h2 class="text-sm font-medium text-black"> Create Post </h2>
+
+            <!-- close button -->
+            <button type="button" class="button-icon absolute top-0 right-0 m-2.5 uk-modal-close">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+
+        </div>
+        {% csrf_token %}
+        <div class="space-y-5 mt-3 p-2">
+            {{form.caption}}
+            <!-- <input type="text"
+                    class="w-full !text-black placeholder:!text-black !bg-white !border-transparent focus:!border-transparent focus:!ring-transparent !font-normal !text-xl   dark:!text-white dark:placeholder:!text-white dark:!bg-slate-800"
+                    name="" id="" rows="6" placeholder="What do you have in mind?"></input> -->
+        </div>
+        <div class="space-t-5 p-2">
+            {{form.tag}}
+            <!-- <input type="text"
+                    class="w-full !text-black placeholder:!text-black !bg-white !border-transparent focus:!border-transparent focus:!ring-transparent !font-normal !text-s   dark:!text-white dark:placeholder:!text-white dark:!bg-slate-800"
+                    name="" id="" rows="6" placeholder="Tags - Separated by spaces"></input> -->
+        </div>
+        <div class="p-5 pt-0 flex justify-between items-center">
+            <div
+                class="flex items-center gap-1.5 bg-sky-50 text-sky-600 rounded-full py-1 px-2 border-2 border-sky-100 dark:bg-sky-950 dark:border-sky-900">
+                <ion-icon name="image" class="text-base"></ion-icon>
+                <label for="file" class="cursor-pointer">
+                    Upload
+                    {{form.picture}}
+                    <!-- <input type="file" id="file" class="hidden"
+                            accept="image/png, image/gif, image/jpeg" /> -->
+                </label>
+            </div>
+            <div class="flex items-center gap-2">
+                <button type="submit" class="button bg-blue-500 text-white py-2 px-12 text-[14px]"> Create</button>
+            </div>
+        </div>
+
+    </form>
+
+</div>
+{% endblock content_2%}
