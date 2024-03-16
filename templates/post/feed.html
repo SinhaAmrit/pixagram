@@ -213,8 +213,8 @@
                     <a href="{{post.picture.url}}"> <img src="{% static 'assets/images/avatars/avatar-3.jpg' %}" alt=""
                             class="w-9 h-9 rounded-full"> </a>
                     <div class="flex-1">
-                        <a href="timeline.html">
-                            <h4 class="text-black dark:text-white"> {{ post.user.username }} </h4>
+                        <a href="#">
+                            <h4 class="text-black dark:text-white">{{ post.user.username }} </h4>
                         </a>
                         <div class="text-xs text-gray-500 dark:text-white/80"> {{ post.posted|date:"d M, Y" }}</div>
                     </div>
@@ -261,7 +261,7 @@
                     <div>
                         <div class="flex items-center gap-2.5">
                             <a href="{% url 'like' post.id %}"
-                                class="button-icon text-gray-500 bg-red-100 dark:bg-slate-700 likeButton">
+                                class="button-icon text-red-500 bg-red-100 dark:bg-slate-700 likeButton">
                                 <ion-icon class="text-lg" name="heart"></ion-icon> </a>
                             <a href="#">{{ post.likes}} Likes</a>
                         </div>
