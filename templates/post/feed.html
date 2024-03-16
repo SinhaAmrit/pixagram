@@ -176,11 +176,38 @@
                 </div>
 
             </div>
-
             <!--  post -->
+            {% if not post_items %}
+            <div uk-alert="" class="uk-alert">
+                <div class="p-2 border bg-yellow-50 border-yellow-500/30 rounded-xl dark:bg-slate-700">
+                    <div class="flex items-center justify-between gap-6">
+
+                        <!-- icon -->
+                        <div class="p-1 text-white bg-yellow-500 shadow rounded-xl shadow-yellow-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                class="w-8 h-8">
+                                <path fill-rule="evenodd"
+                                    d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 01.67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 11-.671-1.34l.041-.022zM12 9a.75.75 0 100-1.5.75.75 0 000 1.5z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+
+                        <!-- text -->
+                        <div class="text-base font-semibold text-yellow-700"> Follow someone to view posts by them 😇
+                        </div>
+
+                        <!-- icon close -->
+                        <button type="button"
+                            class="flex p-1 text-gray-600 rounded-lg hover:bg-black/5 ml-auto uk-alert-close">
+                            <ion-icon name="close" class="text-xl md hydrated" role="img" aria-label="close"></ion-icon>
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+            {% endif %}
             {% for post in post_items %}
             <div class="bg-white rounded-xl shadow-sm text-sm font-medium border1 dark:bg-dark2">
-
                 <!-- post heading -->
                 <div class="flex gap-3 sm:p-4 p-2.5 text-sm font-medium">
                     <a href="{{post.picture.url}}"> <img src="{% static 'assets/images/avatars/avatar-3.jpg' %}" alt=""
@@ -233,35 +260,16 @@
                 <div class="sm:p-4 p-2.5 flex items-center gap-4 text-xs font-semibold">
                     <div>
                         <div class="flex items-center gap-2.5">
-                            <button type="button" class="button-icon text-red-500 bg-red-100 dark:bg-slate-700">
-                                <ion-icon class="text-lg" name="heart"></ion-icon> </button>
-                            <a href="#">{{ post.likes}}</a>
-                        </div>
-                        <div class="p-1 px-2 bg-white rounded-full drop-shadow-md w-[212px] dark:bg-slate-700 text-2xl"
-                            uk-drop="offset:10;pos: top-left; animate-out: true; animation: uk-animation-scale-up uk-transform-origin-bottom-left">
-
-                            <div class="flex gap-2"
-                                uk-scrollspy="target: > button; cls: uk-animation-scale-up; delay: 100 ;repeat: true">
-                                <button type="button" class="text-red-600 hover:scale-125 duration-300">
-                                    <span> 👍 </span></button>
-                                <button type="button" class="text-red-600 hover:scale-125 duration-300">
-                                    <span> ❤️ </span></button>
-                                <button type="button" class="text-red-600 hover:scale-125 duration-300">
-                                    <span> 😂 </span></button>
-                                <button type="button" class="text-red-600 hover:scale-125 duration-300">
-                                    <span> 😯 </span></button>
-                                <button type="button" class="text-red-600 hover:scale-125 duration-300">
-                                    <span> 😢 </span></button>
-                            </div>
-
-                            <div class="w-2.5 h-2.5 absolute -bottom-1 left-3 bg-white rotate-45 hidden">
-                            </div>
+                            <a href="{% url 'like' post.id %}"
+                                class="button-icon text-gray-500 bg-red-100 dark:bg-slate-700 likeButton">
+                                <ion-icon class="text-lg" name="heart"></ion-icon> </a>
+                            <a href="#">{{ post.likes}} Likes</a>
                         </div>
                     </div>
                     <div class="flex items-center gap-3">
                         <button type="button" class="button-icon bg-slate-200/70 dark:bg-slate-700">
                             <ion-icon class="text-lg" name="chatbubble-ellipses"></ion-icon> </button>
-                        <span>260</span>
+                        <span>260 Comments</span>
                     </div>
                     <button type="button" class="button-icon ml-auto"> <ion-icon class="text-xl"
                             name="paper-plane-outline"></ion-icon> </button>
