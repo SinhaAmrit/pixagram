@@ -267,7 +267,7 @@
                             <a href="#">
                                 {% if post.likes == 0 %} 0 Likes
                                 {% elif post.likes == 1 and post.liked_by_current_user %} Liked by you
-                                {% elif post.likes == 1 %} 1 Like 
+                                {% elif post.likes == 1 %} 1 Like
                                 {% else %}
                                 {% if post.liked_by_current_user %}
                                 YOU and {{ post.likes|add:"-1" }} other{{ post.likes|add:"-1"|pluralize:"s" }} liked
@@ -284,7 +284,9 @@
                     </div>
                     <button type="button" class="button-icon ml-auto"> <ion-icon class="text-xl"
                             name="paper-plane-outline"></ion-icon> </button>
-                    <button type="button" class="button-icon"> <ion-icon class="text-xl shrink-0" name="bookmark-outline"></ion-icon> </button>
+                    <a href="{% url 'saved' post.id %}" type="button"
+                        class="button-icon {% if post.saved_by_current_user %}text-red-500{% endif %}"> <ion-icon
+                                class=" text-xl shrink-0" name="bookmark-outline"></ion-icon> </a>
                 </div>
 
                 <!-- comments -->

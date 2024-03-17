@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.db import models
 from post.models import Tag, Stream, Follow, Post, Likes
+from userauth.models import Profile
 from post.forms import NewPostForm
 from django.contrib.auth.decorators import login_required
 
@@ -34,17 +35,15 @@ def feed(request):
         group_ids = []
         for post in posts:
             group_ids.append(post.post_id)
-    # post_items = (
-    #     Post.objects.filter(id__in=group_ids)
-    #     .all()
-    #     .order_by("-posted")
-    # )
     post_items = (
         Post.objects.filter(id__in=group_ids)
         .annotate(
             liked_by_current_user=models.Exists(
                 Likes.objects.filter(post_id=models.OuterRef("id"), user=user)
-            )
+            ),
+            saved_by_current_user=models.Exists(
+                user.profile.saved.filter(id=models.OuterRef("id"))
+            ),
         )
         .order_by("-posted")
     )
@@ -66,4 +65,15 @@ def like(request, post_id):
         current_likes = max(0, current_likes - 1)
     post.likes = current_likes
     post.save()
+    return redirect("/")
+
+
+def saved(request, post_id):
+    user = request.user
+    post = Post.objects.get(id=post_id)
+    profile = Profile.objects.get(user=user)
+    if profile.saved.filter(id=post_id).exists():
+        profile.saved.remove(post)
+    else:
+        profile.saved.add(post)
     return redirect("/")

@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "schema_graph",
     "django_seed",
     "post",
+    "userauth",
     "crispy_forms",
     "crispy_bootstrap5",
 ]
