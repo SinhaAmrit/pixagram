@@ -1,6 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse
+from django.db import models
 from post.models import Tag, Stream, Follow, Post, Likes
 from post.forms import NewPostForm
 from django.contrib.auth.decorators import login_required
@@ -33,7 +34,20 @@ def feed(request):
         group_ids = []
         for post in posts:
             group_ids.append(post.post_id)
-        post_items = Post.objects.filter(id__in=group_ids).all().order_by("-posted")
+    # post_items = (
+    #     Post.objects.filter(id__in=group_ids)
+    #     .all()
+    #     .order_by("-posted")
+    # )
+    post_items = (
+        Post.objects.filter(id__in=group_ids)
+        .annotate(
+            liked_by_current_user=models.Exists(
+                Likes.objects.filter(post_id=models.OuterRef("id"), user=user)
+            )
+        )
+        .order_by("-posted")
+    )
     context = {"post_items": post_items, "form": form}
     return render(request, "post/feed.html", context)
 

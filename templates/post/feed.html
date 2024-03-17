@@ -216,7 +216,7 @@
                         <a href="#">
                             <h4 class="text-black dark:text-white">{{ post.user.username }} </h4>
                         </a>
-                        <div class="text-xs text-gray-500 dark:text-white/80"> {{ post.posted|date:"d M, Y" }}</div>
+                        <div class="text-xs text-gray-500 dark:text-white/80">{{ post.posted|date:"d M, Y" }}</div>
                     </div>
 
                     <div class="-mr-1">
@@ -261,9 +261,20 @@
                     <div>
                         <div class="flex items-center gap-2.5">
                             <a href="{% url 'like' post.id %}"
-                                class="button-icon text-red-500 bg-red-100 dark:bg-slate-700 likeButton">
+                                class="button-icon text-gray-500 bg-red-100 dark:bg-slate-700 {% if post.liked_by_current_user %}text-red-500{% endif %}">
                                 <ion-icon class="text-lg" name="heart"></ion-icon> </a>
-                            <a href="#">{{ post.likes}} Likes</a>
+                            <!-- <a href="#">{{ post.likes}} Likes</a> -->
+                            <a href="#">
+                                {% if post.likes == 0 %} 0 Likes
+                                {% elif post.likes == 1 and post.liked_by_current_user %} Liked by you
+                                {% elif post.likes == 1 %} 1 Like 
+                                {% else %}
+                                {% if post.liked_by_current_user %}
+                                YOU and {{ post.likes|add:"-1" }} other{{ post.likes|add:"-1"|pluralize:"s" }} liked
+                                {% else %} {{ post.likes }} Likes
+                                {% endif %}
+                                {% endif %}
+                            </a>
                         </div>
                     </div>
                     <div class="flex items-center gap-3">
@@ -273,8 +284,7 @@
                     </div>
                     <button type="button" class="button-icon ml-auto"> <ion-icon class="text-xl"
                             name="paper-plane-outline"></ion-icon> </button>
-                    <button type="button" class="button-icon"> <ion-icon class="text-xl"
-                            name="share-outline"></ion-icon> </button>
+                    <button type="button" class="button-icon"> <ion-icon class="text-xl shrink-0" name="bookmark-outline"></ion-icon> </button>
                 </div>
 
                 <!-- comments -->
