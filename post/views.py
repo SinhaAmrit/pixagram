@@ -67,7 +67,7 @@ def like(request, post_id):
     post.save()
     return redirect("/")
 
-
+@login_required
 def saved(request, post_id):
     user = request.user
     post = Post.objects.get(id=post_id)
@@ -77,3 +77,8 @@ def saved(request, post_id):
     else:
         profile.saved.add(post)
     return redirect("/")
+
+@login_required
+def timeline(request):
+    context = {}
+    return render(request, "post/timeline.html", context)
