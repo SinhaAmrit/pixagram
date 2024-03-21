@@ -19,7 +19,7 @@ Pixagram is a social media platform inspired by Instagram, built using the robus
 **Embrace Pixagram as your platform to express yourself, connect with the world, and share your captivating visual journey.**
 
 ## Tech Stack
-
+ 
 **Client:** HTML5, CSS3, JavaScript
 
 **Server:** Django, postgresql
